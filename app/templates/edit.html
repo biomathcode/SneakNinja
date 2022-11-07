@@ -1,0 +1,84 @@
+<head>
+  <title>Web Analytics</title>
+  <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu"
+    crossorigin="anonymous"
+  />
+</head>
+
+<body>
+  <div class="container">
+    <h1>Website Analytics</h1>
+    <a href="/dashboard">Back</a>
+    <!-- <form action="/EditTodo" method="post">
+      Website Name:
+      <input
+        type="text"
+        name="websiteName"
+        value='{{CurrWebsite[0]["websiteName"]}}'
+      /><br />
+      Website URL : <br />
+      <input type="url" name="websiteUrl"
+      value='{{CurrWebsite[0]["websiteUrl"]}}' / >
+      <br />
+      <input
+        type="hidden"
+        name="websitesId"
+        value='{{CurrWebsite[0]["websitesId"]}}'
+      />
+      <input type="submit" value="Edit ToDo" class="btn btn-success" />
+    </form> -->
+    <h2>{{CurrWebsite[0]["websiteName"]}}</h2>
+    <h4>{{CurrWebsite[0]["websiteUrl"]}}</h4>
+
+    <div>Number of Visite to your site : {{data|length}}</div>
+    <hr />
+    <div class="post">
+      <table>
+        <tr>
+          <th>Page</th>
+          <th>Country</th>
+          <th>time</th>
+        </tr>
+
+        {% for el in data %}
+        <tr>
+          <td>{{el['pageHref']}}</td>
+          <td>{{el['countryId']}}</td>
+          <td>{{el['ssTime']}}</td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
+</body>
+
+<style>
+  .container {
+    width: 960px;
+  }
+
+  h1 {
+    display: inline-block;
+    margin-right: 400px;
+  }
+  td,
+  th {
+    border: 1px solid #777;
+    padding: 0.5rem;
+    text-align: center;
+  }
+
+  table {
+    border-collapse: collapse;
+  }
+
+  tbody tr:nth-child(odd) {
+    background: #eee;
+  }
+  caption {
+    font-size: 0.8rem;
+  }
+</style>

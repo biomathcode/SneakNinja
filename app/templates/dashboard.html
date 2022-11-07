@@ -1,0 +1,84 @@
+<head>
+  <title>SingleStore Dashboard</title>
+  <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu"
+    crossorigin="anonymous"
+  />
+</head>
+
+<!-- cont timezone = Intl.DateTimeFormat().resolvedOptions().timeZone; -->
+
+<body>
+  <!-- <script type="text/javascript" type="text/javascript">
+
+  var variableName = 
+</script> -->
+  <div class="container">
+    <div class="dash">
+      <h1>SingleSpace Dashboard</h1>
+      <a href="/logout">Log Out</a>
+      <h3>Welcome, {{CurrUser[0]["username"]}}</h3>
+      <br /><br />
+      <div class="post">
+        <h3>Add your site</h3>
+        <form action="/addWebsite" method="post" autocomplete="off">
+          <label> Website Name: </label
+          ><input type="text" name="website_name" /><br />
+          <label>Website URL: </label>
+          <input type="url" name="website_url" />
+
+          <input type="submit" value="+ Add" class="btn btn-success" />
+        </form>
+        <br /><br /><br /><br />
+      </div>
+      <div class="all">
+        {% for website in AllWebsites %}
+        <p><b>Name:</b> {{ website['websiteName'] }}</p>
+        <p><b>Website URL :</b> {{ website['websiteUrl'] }}</p>
+        <p><b>Website key :</b> {{ website['websitesId'] }}</p>
+        <p>Add the Below script on your site </p>
+        <p>
+
+          
+          {{"<script src='https://cdn.jsdelivr.net/gh/biomathcode/SneakNinja/tagscript.js' data-name='sneakninja' data-websiteId='" }} 
+          {{website['websitesId']}}
+          {{"'></script>" }}
+        </p>
+
+        <a href='edit/{{website["websitesId"]}}'>View More</a> <span> - </span>
+        <a href='delete/{{website["websitesId"]}}'>Delete</a>
+        <hr />
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</body>
+
+<style>
+  .container {
+    width: 960px;
+  }
+  .dash {
+    width: 960px;
+    padding: 10px;
+  }
+
+  .dash h1 {
+    display: inline-block;
+    margin-right: 400px;
+  }
+
+  .post {
+    display: inline-block;
+    margin: 0px 60px;
+  }
+
+  .all {
+    display: inline-block;
+    vertical-align: top;
+    margin: 0px 60px;
+    width: 300px;
+  }
+</style>

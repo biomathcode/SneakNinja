@@ -1,0 +1,73 @@
+<head>
+  <title>SneakNinja🥷</title>
+  <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu"
+    crossorigin="anonymous"
+  />
+</head>
+
+<body>
+  <div class="container">
+    <div class="text-center">
+      <h1 class="display-4">Welcome to SneakNinja🥷!</h1>
+      <h3>Web analytic Platform</h3>
+    </div>
+
+    <div class="register box">
+      <h3>Register</h3>
+      <form action="/register" method="post" autocomplete="off">
+        <label for="uname">Username:</label>
+        <input id="uname" type="text" name="Username" /><br />
+
+        <label for="email">Email:</label>
+        <input id="email" type="email" name="Email" /><br />
+
+        <label for="pw">Password:</label>
+        <input id="pw" type="password" name="Password" /><br />
+
+        <label for="pw_conf">Password Confirm:</label>
+        <input
+          id="pw_conf"
+          type="password"
+          name="PasswordConfirmation"
+        /><br /><br />
+
+        <input type="submit" value="Register" class="btn btn-success" />
+      </form>
+      <p style="color: red">{{regerror}}</p>
+    </div>
+
+    <div class="login box">
+      <h3>Log In</h3>
+      <form action="/login" method="post" autocomplete="off">
+        <label for="emaill">Email:</label>
+        <input id="emaill" type="email" name="Email" /><br />
+
+        <label for="passwordl">Password:</label>
+        <input id="passwordl" type="password" name="PwToCheck" /><br /><br />
+
+        <input type="submit" value="Log In" class="btn btn-success" />
+      </form>
+      <span style="color: red">{{logerror}}</span>
+    </div>
+  </div>
+</body>
+
+<style>
+  .container {
+    width: 960px;
+  }
+
+  .box {
+    display: inline-block;
+    vertical-align: top;
+    margin: 50px 50px;
+  }
+
+  .box label {
+    width: 140px;
+    text-align: right;
+  }
+</style>
