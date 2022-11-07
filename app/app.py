@@ -1,7 +1,10 @@
 from flask import Flask, render_template, request, session, redirect, jsonify
 from dbconnector import connectToS2MS
+from flask_cors import CORS, cross_origin
+
 from uuid import uuid4
 app = Flask(__name__)
+cors = CORS(app)
 app.secret_key = 'keep it secret, keep it safe'
 
 db = 'sneakninja'
@@ -11,14 +14,6 @@ db = 'sneakninja'
 def index():
     print("in the index method")
     return render_template('index.html')
-
-
-@app.route('/api/data', methods=['POST'])
-def apiData():
-    s2ms = connectToS2MS(db)
-    data = {
-
-    }
 
 
 @app.route('/register', methods=['POST'])
@@ -209,6 +204,7 @@ def edit(websitesId):
 @app.route('/api/v1', methods=['POST'])
 def apiCenter():
     content_type = request.headers.get('Content-Type')
+
     if (content_type == 'application/json'):
         json = request.json
         s2ms = connectToS2MS(db)
