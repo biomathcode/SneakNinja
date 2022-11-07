@@ -11,7 +11,7 @@ if (document.readyState !== "loading") {
   });
 }
 
-function sneakNinja() {
+async function sneakNinja() {
   var l = document.querySelector('script[data-name="sneakninja"]');
 
   var websiteId = l.dataset["websiteId"];
@@ -26,12 +26,14 @@ function sneakNinja() {
   };
 
   var jsondata = JSON.stringify(data);
-  fetch("http://127.0.0.1:5000/api/v1", {
+  var resonse = await fetch("http://127.0.0.1:5000/api/v1", {
     method: "POST",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
     },
     body: jsondata,
-  }).then(() => console.log("SneakNinja was here"));
+  });
+  var jsonData = await resonse.json();
+  console.log(jsonData);
 }
